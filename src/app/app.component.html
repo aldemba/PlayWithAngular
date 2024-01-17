@@ -1,22 +1,9 @@
-<h1 class="center">Liste de Pokemons</h1>
+<nav>
+  <div class="nav-wrapper teal">
+    <a href="#" class="brand-logo center">
+      Pokédex
+    </a>
+  </div>
+</nav>
 
-<div class="container">
-    <div class="row">
-      <div *ngFor="let pokemon of pokemonList" class="col m4 s6">
-          <div class="card horizontal" appBorderCard>
-              <div class="card-image" >
-                <img [src]="pokemon.picture" [width]="250" [height]="200" alt="">
-              </div>
-              <div class="card-stacked">
-                  <div class="card-content">
-                    <p><strong>{{pokemon.name|uppercase}}</strong></p>
-                    
-                    <p>{{pokemon.created |date:"d/m/Y"|uppercase}}</p>
-
-                    <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">{{ type }}</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div>
-</div>
+<router-outlet></router-outlet>
