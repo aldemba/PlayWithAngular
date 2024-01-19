@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
-import { POKEMONS } from '../mock-pokemon-list';
 import { PokemonService } from '../pokemon.service';
 
 @Component({
@@ -24,13 +23,17 @@ export class DetailPokemonComponent {
 
     if(pokemonId){
       this.pokemon=this.pokserv.getPokemonById(+pokemonId)
-     
-      
-      
+
     }
   }
 
   goToPokemonList(){
     this.router.navigate(['/pokemons'])
+  }
+
+
+  goToEditPokemon(pokemon:Pokemon){
+    this.router.navigate(['/edit/pokemon', pokemon.id])
+
   }
 }

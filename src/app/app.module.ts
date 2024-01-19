@@ -14,9 +14,9 @@ import { PokemonModule } from './pokemon/pokemon.module';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     PokemonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

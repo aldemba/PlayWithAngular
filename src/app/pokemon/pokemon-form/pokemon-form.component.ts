@@ -28,6 +28,7 @@ hasType(type:string):boolean{
 return this.pokemon.types.includes(type)
 }
 
+
 isTypesValid(type:string): boolean {
 if((this.pokemon.types.length==1) && (this.pokemon.types.includes(type))){
   return false;
