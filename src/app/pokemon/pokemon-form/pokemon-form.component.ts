@@ -54,6 +54,10 @@ if(isChecked){
 onSubmit(){
   console.log('Submit Form');
 
+  this.pokser.updatePokemon(this.pokemon).subscribe(
+    ()=>this.router.navigate(['/pokemon', this.pokemon.id])
+  )
+
   this.router.navigate(['/pokemon', this.pokemon.id])
   
 }

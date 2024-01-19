@@ -21,8 +21,12 @@ export class EditFormComponent {
     const pokemonId:string|null=this.route.snapshot.paramMap.get('id')
     
 
-    if (pokemonId) {
-        this.pokemon=this.pokserv.getPokemonById(+pokemonId)
+    if(pokemonId) {
+      this.pokserv.getPokemonById(+pokemonId).subscribe(
+        (pok)=>{
+          this.pokemon=pok
+        }
+      )  
         // console.log(pokemonId);
         
     }else{

@@ -16,7 +16,11 @@ export class ListPokemonComponent {
   constructor(private router:Router, private pokserv:PokemonService){}
 
   ngOnInit(){
-    this.pokemonList= this.pokserv.getPokemonList();
+    this.pokserv.getPokemonList().subscribe(
+      (pokelist)=>{
+        this.pokemonList=pokelist
+      }
+    )
   }
 
 

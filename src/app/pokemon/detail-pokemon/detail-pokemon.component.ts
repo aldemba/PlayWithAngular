@@ -22,7 +22,11 @@ export class DetailPokemonComponent {
     
 
     if(pokemonId){
-      this.pokemon=this.pokserv.getPokemonById(+pokemonId)
+      this.pokserv.getPokemonById(+pokemonId).subscribe(
+        (pokId)=>{
+          this.pokemon=pokId
+        }
+      )
 
     }
   }
@@ -35,5 +39,13 @@ export class DetailPokemonComponent {
   goToEditPokemon(pokemon:Pokemon){
     this.router.navigate(['/edit/pokemon', pokemon.id])
 
+  }
+
+  deletePokemon(pokemon:Pokemon){
+    this.pokserv.deletePokemonById(pokemon.id).subscribe(
+      ()=>{
+        this.goToPokemonList();
+      }
+    )
   }
 }

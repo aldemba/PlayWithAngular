@@ -1,4 +1,6 @@
-<div class="container">
+
+<ng-container *ngIf="pokemonList != null" >
+  <div class="container">
     <div class="row">
       <div *ngFor="let pokemon of pokemonList" class="col m4 s6">
           <div class="card horizontal" (click)="goToPokemon(pokemon)" appBorderCard>
@@ -18,3 +20,10 @@
       </div>
     </div>
 </div>
+
+<a class="btn-floating btn-large waves-light red z-depth" style="position: fixed; bottom:25px; right: 25px;" routerLink="/pokemon/add" >+</a>
+</ng-container>
+
+<ng-container *ngIf="pokemonList == null" >
+<app-loader></app-loader>
+</ng-container>
