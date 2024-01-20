@@ -12,10 +12,15 @@
                     [(ngModel)]="pokemon.name" name="name" #name="ngModel">
             
     
-            <div [hidden]="name.valid || name.pristine"
+           <!--  <div [hidden]="name.valid || name.pristine"
                   class="card-panel red accent-1">
                   Le nom du pokémon est requis (1-25).
-            </div>
+            </div> -->
+            <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1">
+              <span *ngIf="name.errors?.['required']">Le nom du Pokémon est requis.</span>
+              <span *ngIf="name.errors?.['pattern']">Le nom du Pokémon doit contenir entre 1 et 25 caractères alphanumériques.</span>
+           </div>
+           
           </div>
 
     
