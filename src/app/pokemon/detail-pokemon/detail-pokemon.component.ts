@@ -42,7 +42,7 @@ export class DetailPokemonComponent {
   }
 
   deletePokemon(pokemon:Pokemon){
-    this.pokserv.deletePokemonById(pokemon.id).subscribe(
+    this.pokserv.deletePokemonById(+pokemon.id).subscribe(
       ()=>{
         this.goToPokemonList();
       }

@@ -8,10 +8,11 @@ import { Pokemon } from '../pokemon';
 })
 export class AddPokemonComponent {
 
-  // pokemon:Pokemon
+   pokemon!:Pokemon
 
   ngOnInit(){
-    // this.pokemon= new Pokemon();
+     this.pokemon= new Pokemon();
+     
   }
 
 
