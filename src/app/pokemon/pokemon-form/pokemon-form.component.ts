@@ -49,7 +49,9 @@ if(isChecked){
   const index=this.pokemon.types.indexOf(type)
   this.pokemon.types.splice(index,1)
 }
+
 }
+
 
 onSubmit(){
   console.log('Submit Form');
@@ -61,5 +63,7 @@ onSubmit(){
   this.router.navigate(['/pokemon', this.pokemon.id])
   
 }
+
+
 
 }

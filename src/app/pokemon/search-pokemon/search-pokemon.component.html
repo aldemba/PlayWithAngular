@@ -13,6 +13,9 @@
                             class="collection-item"
                             (click)="goToDetail(pokemon)" >{{pokemon.name}}
                         </a>
+                        <div *ngIf="noResultsFound" class="no-results-message">
+                            Aucun résultat trouvé.
+                          </div>
                     </div>
                 </div>
             </div>
