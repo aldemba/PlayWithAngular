@@ -12,6 +12,8 @@ export class PokemonFormComponent {
 
   @Input() pokemon!:Pokemon
 
+  isAddForm:Boolean=true
+
   types: string[]=[]
 
   constructor(private pokser:PokemonService, private router:Router){
@@ -20,6 +22,10 @@ export class PokemonFormComponent {
 
 ngOnInit(){
   this.types=this.pokser.getPokemonTypeList();
+
+  this.isAddForm=this.router.url.includes('add')
+
+
 }
 
 
@@ -56,11 +62,20 @@ if(isChecked){
 onSubmit(){
   console.log('Submit Form');
 
-  this.pokser.updatePokemon(this.pokemon).subscribe(
-    ()=>this.router.navigate(['/pokemon', this.pokemon.id])
-  )
+  if(this.isAddForm){
 
-  this.router.navigate(['/pokemon', this.pokemon.id])
+    this.pokser.addPokemon(this.pokemon).subscribe(
+      ()=>this.router.navigate(['/pokemon', this.pokemon.id])
+    )
+  }else{
+
+    this.pokser.updatePokemon(this.pokemon).subscribe(
+      ()=>this.router.navigate(['/pokemon', this.pokemon.id])
+    )
+
+    // this.router.navigate(['/pokemon', this.pokemon.id])
+  }
+
   
 }
 
