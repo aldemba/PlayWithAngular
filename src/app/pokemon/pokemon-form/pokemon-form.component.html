@@ -81,6 +81,9 @@
               </span>
             </label>
           </p> 
+          <div [hidden]="typesValid || pokemon.types.length > 0" class="card-panel red accent-1">
+            Vous devez sélectionner au moins un type et au plus trois types.
+          </div>
         </form>
   
         <!-- Submit button -->
@@ -88,7 +91,7 @@
         <div class="section center">
           <button type="submit"
             class="waves-effect waves-light btn"
-            [disabled]="!pokemonForm.form.valid">
+            [disabled]="!pokemonForm.form.valid || !typesValid">
             Valider</button>
         </div>
   

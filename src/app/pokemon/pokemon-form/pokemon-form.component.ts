@@ -16,6 +16,9 @@ export class PokemonFormComponent {
 
   types: string[]=[]
 
+  typesValid: boolean = true;
+
+
   constructor(private pokser:PokemonService, private router:Router){
 
   }
@@ -30,36 +33,64 @@ ngOnInit(){
 
 
 
-hasType(type:string):boolean{
-return this.pokemon.types.includes(type)
+// hasType(type:string):boolean{
+// return this.pokemon.types.includes(type)
+// }
+
+
+// isTypesValid(type:string): boolean {
+// if((this.pokemon.types.length==1) && (this.hasType(type))){
+//   return false;
+// }else if((this.pokemon.types.length>2) && !this.hasType(type)){
+// return false;
+// }
+
+// return true;
+// }
+
+
+// selectType($event:any, type:string){
+// const isChecked:boolean =($event.target as HTMLInputElement).checked
+
+// if(isChecked){
+//   this.pokemon.types.push(type)
+// }else{
+//   const index=this.pokemon.types.indexOf(type)
+//   this.pokemon.types.splice(index,1)
+// }
+
+// }
+
+hasType(type: string): boolean {
+  return this.pokemon.types.includes(type);
 }
 
-
-isTypesValid(type:string): boolean {
-if((this.pokemon.types.length==1) && (this.hasType(type))){
-  return false;
-}else if((this.pokemon.types.length>2) && !this.hasType(type)){
-return false;
+isTypesValid(type: string): boolean {
+  if (this.pokemon.types.length >= 3 && !this.hasType(type)) {
+    return false;
+  }
+  return true;
 }
 
-return true;
-}
+selectType($event: any, type: string) {
+  const isChecked: boolean = ($event.target as HTMLInputElement).checked;
 
+  if (isChecked) {
+    this.pokemon.types.push(type);
+  } else {
+    const index = this.pokemon.types.indexOf(type);
+    this.pokemon.types.splice(index, 1);
+  }
 
-selectType($event:any, type:string){
-const isChecked:boolean =($event.target as HTMLInputElement).checked
-
-if(isChecked){
-  this.pokemon.types.push(type)
-}else{
-  const index=this.pokemon.types.indexOf(type)
-  this.pokemon.types.splice(index,1)
-}
-
+  this.typesValid = this.pokemon.types.length > 0 && this.pokemon.types.length <= 3;
 }
 
 
 onSubmit(){
+  if (!this.typesValid) {
+    alert('Vous devez sélectionner au moins un type et au plus trois types.');
+    return;
+  }
   console.log('Submit Form');
 
   if(this.isAddForm){
